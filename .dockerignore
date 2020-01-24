@@ -1,0 +1,15 @@
+# git and docker files
+.git
+.git*
+docker-compose.yml
+docker-compose.*.yml
+Dockerfile
+
+# environment files
+.env.example
+
+# compiled
+node_modules/
+
+# IDEs and editors
+.idea/

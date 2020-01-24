@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  web:
+    image: web-teste-pratico
+    container_name: web-teste-pratico
+    build: .
+    env_file:
+      - ./.env
+    ports:
+      - ${PORT}:${PORT}
+    restart: always
+    stdin_open: true
+    tty: true
