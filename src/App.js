@@ -1,24 +1,28 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LazyImport from './lazyload';
+import routes from './routes';
 
 class App extends React.Component {
+  handleImportPage = page => {
+    return LazyImport({
+      loader: () => import(`./pages/${page}`)
+    });
+  };
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          {routes.map(route => (
+            <Route
+              key={route.path}
+              path={route.path}
+              component={this.handleImportPage(route.component)}
+            />
+          ))}
+        </Switch>
+      </BrowserRouter>
     );
   }
 }

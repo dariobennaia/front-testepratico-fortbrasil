@@ -24,11 +24,14 @@
     "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}]//,
     //"no-underscore-dangle": [2, { "allow": ["_id", "_update"] }]
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
     }
   }
 }

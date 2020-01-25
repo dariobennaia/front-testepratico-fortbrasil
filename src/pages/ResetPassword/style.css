@@ -1,0 +1,17 @@
+.info-bottom {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btn-reset-password {
+  display: block;
+  min-width: 10px;
+  margin: auto;
+  padding: 12px 50px;
+}
+
+.btn-reset-password {
+  animation: move 400ms;
+  animation-delay: 250ms;
+  animation-fill-mode: backwards;
+}

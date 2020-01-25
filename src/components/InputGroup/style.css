@@ -1,0 +1,16 @@
+.input-block {
+  margin-bottom: 20px;
+}
+
+.input-block label {
+  font-size: 14px;
+  color: #28005c;
+}
+
+.input-block input {
+  font-size: 16px;
+  color: #28005c;
+  border-radius: 2px;
+  border: 1px solid #ccddef;
+  outline-color: #28005c;
+}
