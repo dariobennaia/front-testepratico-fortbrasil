@@ -1,5 +1,9 @@
 export default [
   {
+    path: '/',
+    component: 'Login'
+  },
+  {
     path: '/login',
     component: 'Login'
   },

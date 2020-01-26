@@ -1,16 +1,5 @@
 .btn-block {
-  /* border: 0.5em;
-  background-color: #fff;
-  color: #17804a;
-  border-radius: 25px;
-  text-decoration: none;
-  cursor: pointer;
-  
-  display: block;
-  min-width: 10px;
-  margin: auto;
-  padding: 12px 50px; */
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
   color: #6e6e6e;
   padding: 12px 43px;
