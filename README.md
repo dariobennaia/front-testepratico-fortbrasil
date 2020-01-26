@@ -42,7 +42,7 @@ ser especificadas.
 $ yarn install
 
 # modo "watch" (hot reloading)
-$ yarn run dev
+$ yarn start
 ```
 
 ### No Docker (docker-compose)
