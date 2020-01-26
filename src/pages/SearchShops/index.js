@@ -39,13 +39,19 @@ class SearchShops extends React.Component {
 
   handleCurrentPosition = () => {
     const { form } = this.state;
-    navigator.geolocation.getCurrentPosition(position => {
-      const { latitude, longitude } = position.coords;
-      form.latitude = latitude;
-      form.longitude = longitude;
-      this.setState(form);
-      this.handleSearch();
-    });
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        form.latitude = latitude;
+        form.longitude = longitude;
+        this.setState(form);
+        this.handleSearch();
+      },
+      () => {
+        alert('Habilite sua localização');
+        this.handleSearch();
+      }
+    );
   };
 
   handleChangeValueInput = e => {

@@ -42,6 +42,7 @@ class ResetPassword extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     try {
+      this.setState({ disableForm: true });
       const { email, password } = this.state;
       const { data } = await api.patch('/change-password', { email, password });
       this.handleShowAlert('success', 'Senha alterada com sucesso!');
@@ -50,6 +51,7 @@ class ResetPassword extends React.Component {
       }, 1500);
       return data;
     } catch (err) {
+      this.setState({ disableForm: false });
       const { data, status } = err.response;
       if (status === 422) {
         const msg = data.errors.map((value, id) => {
@@ -62,7 +64,7 @@ class ResetPassword extends React.Component {
   };
 
   render() {
-    const { alert } = this.state;
+    const { alert, disableForm } = this.state;
     return (
       <AuthLayout>
         <SectionLogin title="REDEFINIR SENHA">
@@ -87,6 +89,7 @@ class ResetPassword extends React.Component {
               buttonClass="btn-reset-password btn-success"
               buttonName="Redefinir"
               buttonType="submit"
+              buttonDisabled={disableForm}
             />
             <div className="info-bottom">
               <Link to="/login">Já tenho uma conta</Link>

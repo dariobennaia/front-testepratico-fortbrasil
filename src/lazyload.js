@@ -1,7 +1,7 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 
-const LoadingComponent = () => <div>Loading...</div>;
+const LoadingComponent = () => <div></div>;
 
 const LazyImport = opts =>
   Loadable({

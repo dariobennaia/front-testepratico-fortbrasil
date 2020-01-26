@@ -42,6 +42,7 @@ class CreateAccount extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     try {
+      this.setState({ disableForm: true });
       const { name, email, password } = this.state;
       const { data } = await api.post('/users', { name, email, password });
       this.handleShowAlert('success', 'Sucesso!');
@@ -50,6 +51,7 @@ class CreateAccount extends React.Component {
       }, 1500);
       return data;
     } catch (err) {
+      this.setState({ disableForm: false });
       const { data, status } = err.response;
       if (status === 422) {
         const msg = data.errors.map((value, id) => {
@@ -62,7 +64,7 @@ class CreateAccount extends React.Component {
   };
 
   render() {
-    const { alert } = this.state;
+    const { alert, disableForm } = this.state;
     return (
       <AuthLayout>
         <SectionLogin title="CRIAR CONTA">
@@ -93,6 +95,7 @@ class CreateAccount extends React.Component {
               buttonClass="btn-create-account btn-success"
               buttonName="Criar conta"
               buttonType="submit"
+              buttonDisabled={disableForm}
             />
             <div className="info-bottom">
               <Link to="/login">Já tenho uma conta</Link>

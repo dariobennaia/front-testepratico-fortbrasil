@@ -72,6 +72,7 @@ class Home extends React.Component {
   handleSave = async e => {
     e.preventDefault();
     try {
+      this.setState({ disableForm: true });
       const { _id, ...formData } = this.state.form;
 
       if (_id) {
@@ -81,8 +82,10 @@ class Home extends React.Component {
       }
       this.handleClearForm();
       this.handleLoadShops();
+      this.setState({ disableForm: false });
       return this.handleShowAlert('success', 'Sucesso');
     } catch (err) {
+      this.setState({ disableForm: false });
       const { data, status } = err.response;
       if (status === 422) {
         const msg = data.errors.map((value, id) => {
@@ -113,7 +116,7 @@ class Home extends React.Component {
   };
 
   render() {
-    const { form, alert, shops } = this.state;
+    const { form, alert, shops, disableForm } = this.state;
     return (
       <DashLayout>
         <Sidebar>
@@ -167,12 +170,14 @@ class Home extends React.Component {
                 buttonType="submit"
                 buttonName="Salvar"
                 buttonClass="btn-success"
+                buttonDisabled={disableForm}
               />
               <Button
                 buttonType="button"
                 buttonName="Limpar"
                 buttonClass="btn-warning"
                 onClick={this.handleClearForm}
+                buttonDisabled={disableForm}
               />
             </div>
           </form>

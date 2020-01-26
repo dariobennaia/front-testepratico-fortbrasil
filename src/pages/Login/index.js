@@ -41,6 +41,7 @@ class Login extends React.Component {
   handleSubmit = async e => {
     e.preventDefault();
     try {
+      this.setState({ disableForm: true });
       const { email, password } = this.state;
       const { data } = await api.post('/login', { email, password });
       sessionStorage.setItem('token', JSON.stringify(data.token));
@@ -51,6 +52,7 @@ class Login extends React.Component {
       }, 1000);
       return data;
     } catch (err) {
+      this.setState({ disableForm: false });
       const { data, status } = err.response;
       if (status === 422) {
         const msg = data.errors.map((value, id) => {
@@ -63,7 +65,7 @@ class Login extends React.Component {
   };
 
   render() {
-    const { alert } = this.state;
+    const { alert, disableForm } = this.state;
     return (
       <AuthLayout>
         <SectionLogin title="LOGIN">
@@ -88,6 +90,7 @@ class Login extends React.Component {
               buttonClass="btn-login btn-success"
               buttonName="Login"
               buttonType="submit"
+              buttonDisabled={disableForm}
             />
             <div className="info-bottom">
               <Link to="/create-account">Não tem uma conta?</Link>
