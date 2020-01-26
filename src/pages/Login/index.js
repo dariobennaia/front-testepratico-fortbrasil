@@ -85,7 +85,7 @@ class Login extends React.Component {
               inputChange={this.handleChangeValueInput}
             />
             <Button
-              buttonClass="btn-login"
+              buttonClass="btn-login btn-success"
               buttonName="Login"
               buttonType="submit"
             />

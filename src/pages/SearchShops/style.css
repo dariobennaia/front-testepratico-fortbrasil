@@ -1,3 +1,9 @@
+aside {
+  animation: move-top-to-bottom 400ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
+}
+
 aside strong {
   font-size: 20px;
   text-align: center;
@@ -17,9 +23,21 @@ input {
   margin-right: 170px;
 }
 
-form .input-block {
-  animation: move 400ms;
-  animation-delay: 200ms;
+form .input-block:nth-child(1) {
+  animation: move-left-to-right 400ms;
+  animation-delay: 800ms;
+  animation-fill-mode: backwards;
+}
+
+form .input-block:nth-child(2) {
+  animation: move-left-to-right 400ms;
+  animation-delay: 900ms;
+  animation-fill-mode: backwards;
+}
+
+form .input-block:nth-child(3) {
+  animation: move-left-to-right 400ms;
+  animation-delay: 1000ms;
   animation-fill-mode: backwards;
 }
 
@@ -30,15 +48,10 @@ main ul {
   list-style: none;
 }
 
-@keyframes move {
-  from {
-    opacity: 0;
-    transform: translateX(-35%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0%);
-  }
+main {
+  animation: move-top-to-bottom 400ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
 }
 
 .buttons-actions {
@@ -55,4 +68,26 @@ main ul {
 
 .menu-option {
   text-decoration: none;
+}
+
+@keyframes move-left-to-right {
+  from {
+    opacity: 0;
+    transform: translateX(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes move-top-to-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }

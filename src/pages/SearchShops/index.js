@@ -74,7 +74,7 @@ class SearchShops extends React.Component {
           <form>
             <InputGroup
               inputId="name"
-              inputTitle="Nome loja"
+              inputTitle="Informe o nome da loja"
               inputType="text"
               inputChange={this.handleChangeValueInput}
               inputValue={form.name || ''}
@@ -82,7 +82,7 @@ class SearchShops extends React.Component {
             />
             <InputGroup
               inputId="distance"
-              inputTitle="Qual a distancia (em metros)?"
+              inputTitle="Qual a distância (em metros)?"
               inputType="number"
               inputChange={this.handleChangeValueInput}
               inputValue={form.distance || 1}

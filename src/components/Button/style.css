@@ -1,12 +1,64 @@
 .btn-block {
-  border: none;
-  background-color: #28005c;
-  color: white;
+  /* border: 0.5em;
+  background-color: #fff;
+  color: #17804a;
   border-radius: 25px;
+  text-decoration: none;
   cursor: pointer;
   
   display: block;
   min-width: 10px;
   margin: auto;
-  padding: 12px 50px;
+  padding: 12px 50px; */
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: #6e6e6e;
+  padding: 12px 43px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: auto;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.btn-success {
+  background-color: white;
+  border: 2px solid #4CAF50;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.btn-info {
+  background-color: white;
+  border: 2px solid #008CBA;
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color: #008CBA;
+}
+
+.btn-warning {
+  background-color: white;
+  border: 2px solid rgb(186, 183, 0);
+}
+
+.btn-warning:hover {
+  color: #fff;
+  background-color: rgb(186, 183, 0);
+}
+
+.btn-danger {
+  background-color: white;
+  border: 2px solid #f44336;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #f44336;
 }

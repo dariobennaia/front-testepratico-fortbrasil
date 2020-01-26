@@ -107,6 +107,11 @@ class Home extends React.Component {
     });
   };
 
+  handleDeleteShop = async id => {
+    await api.delete(`/shops/${id}`);
+    this.handleLoadShops();
+  };
+
   render() {
     const { form, alert, shops } = this.state;
     return (
@@ -118,7 +123,7 @@ class Home extends React.Component {
             </Link>
             <ButtonLogout />
           </div>
-          <form>
+          <form onSubmit={this.handleSave}>
             {alert.show && (
               <Alert alertType={alert.type} alertMsg={alert.msg} />
             )}
@@ -159,22 +164,25 @@ class Home extends React.Component {
             />
             <div className="buttons-actions">
               <Button
-                buttonType="success"
+                buttonType="submit"
                 buttonName="Salvar"
-                buttonClass="success"
-                onClick={this.handleSave}
+                buttonClass="btn-success"
               />
               <Button
                 buttonType="button"
                 buttonName="Limpar"
-                buttonClass="warning"
+                buttonClass="btn-warning"
                 onClick={this.handleClearForm}
               />
             </div>
           </form>
         </Sidebar>
         <Main>
-          <ShopsList shops={shops} shopSelected={this.handleEditShop} />
+          <ShopsList
+            shops={shops}
+            shopEdit={this.handleEditShop}
+            shopDelete={this.handleDeleteShop}
+          />
         </Main>
       </DashLayout>
     );

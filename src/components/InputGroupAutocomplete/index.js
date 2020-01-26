@@ -32,7 +32,7 @@ class InputGroupAutocomplete extends React.Component {
         onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="input-block">
+          <div className="input-block-autocomplete">
             <label htmlFor={inputId}>{inputTitle}</label>
             <input
               type={inputType}

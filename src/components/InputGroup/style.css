@@ -4,15 +4,15 @@
 
 .input-block label {
   font-size: 14px;
-  color: #28005c;
+  color: #005d2dbd;
 }
 
 .input-block input {
   font-size: 16px;
-  color: #28005c;
+  color: #6e6e6e;
   border-radius: 2px;
   border: 1px solid #ccddef;
-  outline-color: #28005c;
+  outline-color: #005d2dbd;
 }
 
 .input-block-checkbox {

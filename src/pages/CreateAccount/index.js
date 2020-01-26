@@ -90,7 +90,7 @@ class CreateAccount extends React.Component {
               inputChange={this.handleChangeValueInput}
             />
             <Button
-              buttonClass="btn-create-account"
+              buttonClass="btn-create-account btn-success"
               buttonName="Criar conta"
               buttonType="submit"
             />

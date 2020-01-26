@@ -84,7 +84,7 @@ class ResetPassword extends React.Component {
               inputChange={this.handleChangeValueInput}
             />
             <Button
-              buttonClass="btn-reset-password"
+              buttonClass="btn-reset-password btn-success"
               buttonName="Redefinir"
               buttonType="submit"
             />

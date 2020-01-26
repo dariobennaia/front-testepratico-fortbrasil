@@ -5,6 +5,25 @@ li.shop-item {
   padding: 20px;
 }
 
+.no-information {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.no-information span {
+  font-size: 23px;
+  position: absolute;
+  color: #9a9a9a;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+}
+
 li.shop-item header {
   display: flex;
   flex-direction: row;
