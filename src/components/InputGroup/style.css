@@ -1,0 +1,26 @@
+.input-block {
+  margin-bottom: 20px;
+}
+
+.input-block label {
+  font-size: 14px;
+  color: #005d2dbd;
+}
+
+.input-block input {
+  font-size: 16px;
+  color: #6e6e6e;
+  border-radius: 2px;
+  border: 1px solid #ccddef;
+  outline-color: #005d2dbd;
+}
+
+.input-block-checkbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-block-checkbox input[type=checkbox] {
+  float: left;
+  width: 14px;
+}

@@ -1,0 +1,10 @@
+.info-bottom {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btn-login {
+  animation: move 400ms;
+  animation-delay: 250ms;
+  animation-fill-mode: backwards;
+}
