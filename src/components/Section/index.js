@@ -1,13 +1,9 @@
 import React from 'react';
 import './style.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class Section extends React.Component {
   render() {
-    const { title, children } = this.props;
+    const { title, children } = this.props;// eslint-disable-line
 
     return (
       <section className="form-section">
@@ -18,4 +14,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Section;

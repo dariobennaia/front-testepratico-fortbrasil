@@ -1,6 +1,12 @@
-button {
+.btn-block {
   border: none;
   background-color: #28005c;
   color: white;
   border-radius: 25px;
+  cursor: pointer;
+  
+  display: block;
+  min-width: 10px;
+  margin: auto;
+  padding: 12px 50px;
 }

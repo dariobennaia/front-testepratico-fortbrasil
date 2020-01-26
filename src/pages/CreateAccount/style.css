@@ -4,13 +4,6 @@
 }
 
 .btn-create-account {
-  display: block;
-  min-width: 10px;
-  margin: auto;
-  padding: 12px 50px;
-}
-
-.btn-create-account {
   animation: move 400ms;
   animation-delay: 250ms;
   animation-fill-mode: backwards;

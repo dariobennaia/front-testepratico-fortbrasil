@@ -1,0 +1,52 @@
+li.shop-item {
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+  padding: 20px;
+}
+
+li.shop-item header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+li.shop-item header img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+.shop-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: -50px;
+  float: right;
+}
+
+.shop-actions button {
+  color: #b1aeae;
+  cursor: pointer;
+  margin-left: 8px;
+  border: none;
+  background-color: #fff;
+}
+
+li.shop-item header .shop-info {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.shop-info strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+li.shop-item p {
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 10px 0;
+}

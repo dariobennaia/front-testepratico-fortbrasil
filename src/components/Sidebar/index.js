@@ -2,12 +2,8 @@ import React from 'react';
 import './style.css';
 
 class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { children } = this.props;
+    const { children } = this.props;// eslint-disable-line
 
     return <aside>{children}</aside>;
   }

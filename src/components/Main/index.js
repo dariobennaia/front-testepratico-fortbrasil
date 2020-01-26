@@ -1,11 +1,12 @@
 import React from 'react';
 import './style.css';
 
-class DashLayout extends React.Component {
+class Main extends React.Component {
   render() {
     const { children } = this.props;// eslint-disable-line
-    return <div id="app">{children}</div>;
+
+    return <main>{children}</main>;
   }
 }
 
-export default DashLayout;
+export default Main;

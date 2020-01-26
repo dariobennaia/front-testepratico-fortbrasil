@@ -2,12 +2,8 @@ import React from 'react';
 import './style.css';
 
 class Alert extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { alertType, alertMsg } = this.props;
+    const { alertType, alertMsg } = this.props;// eslint-disable-line
 
     return <div className={`alert ${alertType}`}>{alertMsg}</div>;
   }

@@ -46,7 +46,7 @@ class CreateAccount extends React.Component {
       const { data } = await api.post('/users', { name, email, password });
       this.handleShowAlert('success', 'Sucesso!');
       setTimeout(() => {
-        this.props.history.push('/login');
+        this.props.history.push('/login');// eslint-disable-line
       }, 1500);
       return data;
     } catch (err) {
@@ -66,7 +66,7 @@ class CreateAccount extends React.Component {
     return (
       <AuthLayout>
         <SectionLogin title="CRIAR CONTA">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             {alert.show && (
               <Alert alertType={alert.type} alertMsg={alert.msg} />
             )}
@@ -74,25 +74,25 @@ class CreateAccount extends React.Component {
               inputType="text"
               inputTitle="Nome"
               inputId="name"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
+              inputAutoFocus={true}
             />
             <InputGroup
               inputType="email"
               inputTitle="E-mail"
               inputId="email"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
             />
             <InputGroup
               inputType="password"
               inputTitle="Senha"
               inputId="password"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
             />
             <Button
               buttonClass="btn-create-account"
               buttonName="Criar conta"
-              buttonType="button"
-              onClick={this.handleSubmit}
+              buttonType="submit"
             />
             <div className="info-bottom">
               <Link to="/login">Já tenho uma conta</Link>

@@ -16,6 +16,7 @@ class App extends React.Component {
         <Switch>
           {routes.map(route => (
             <Route
+              exact
               key={route.path}
               path={route.path}
               component={this.handleImportPage(route.component)}

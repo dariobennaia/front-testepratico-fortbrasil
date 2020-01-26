@@ -20,26 +20,6 @@ body, input, button {
     font-family: Roboto, sans-serif;
 }
 
-
-/* main css */
-main {
-  flex: 1;
-}
-
-main ul {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  list-style: none;
-}
-
-@media (max-width: 650px) {
-  main ul {
-      grid-template-columns: 1fr;
-  }
-}
-
-/* app css */
 #app {
   max-width: 1200px;
   margin: 0 auto;
@@ -52,6 +32,7 @@ main ul {
 
 #app main {
   margin-left: 30px;
+  width: 100%;
 }
 
 @media (max-width: 1000px) {
@@ -66,5 +47,11 @@ main ul {
 
   #app aside {
       width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+      grid-template-columns: 1fr;
   }
 }

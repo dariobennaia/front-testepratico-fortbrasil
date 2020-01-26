@@ -12,7 +12,11 @@ export default [
     component: 'ResetPassword'
   },
   {
-    path: '/',
+    path: '/shops',
     component: 'Home'
+  },
+  {
+    path: '/shops/maps',
+    component: 'SearchShops'
   }
 ];

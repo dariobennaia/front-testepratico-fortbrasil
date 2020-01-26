@@ -1,0 +1,60 @@
+aside strong {
+  font-size: 20px;
+  text-align: center;
+  display: block;
+  color: #333;
+}
+
+aside form {
+  margin-top: 30px;
+}
+
+input {
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+  padding: 7px;
+  margin-right: 170px;
+}
+
+form .input-block {
+  animation: move 400ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
+}
+
+main ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  list-style: none;
+}
+
+.buttons-actions {
+  display: flex;
+  flex-direction: row;
+  animation: move 400ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
+}
+
+.menu-option {
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+  main ul {
+      grid-template-columns: 1fr;
+  }
+}
+
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

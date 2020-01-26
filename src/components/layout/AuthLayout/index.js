@@ -2,12 +2,8 @@ import React from 'react';
 import './style.css';
 
 class AuthLayout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { children } = this.props;
+    const { children } = this.props;// eslint-disable-line
 
     return <div id="auth">{children}</div>;
   }

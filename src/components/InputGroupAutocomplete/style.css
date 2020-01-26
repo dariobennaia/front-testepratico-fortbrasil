@@ -14,13 +14,3 @@
   border: 1px solid #ccddef;
   outline-color: #28005c;
 }
-
-.input-block-checkbox {
-  display: flex;
-  flex-direction: row;
-}
-
-.input-block-checkbox input[type=checkbox] {
-  float: left;
-  width: 14px;
-}
