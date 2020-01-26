@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import Squares from '../../components/effects/Squares';
 import api from '../../services/api';
 
-class CreateAccount extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,8 @@ class CreateAccount extends React.Component {
       sessionStorage.setItem('token', JSON.stringify(data.token));
       sessionStorage.setItem('user', JSON.stringify(data.user));
       setTimeout(() => {
-        this.props.history.push('/');
+        window.location = '/shops';
+        // this.props.history.push('/');// eslint-disable-line
       }, 1000);
       return data;
     } catch (err) {
@@ -66,7 +67,7 @@ class CreateAccount extends React.Component {
     return (
       <AuthLayout>
         <SectionLogin title="LOGIN">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             {alert.show && (
               <Alert alertType={alert.type} alertMsg={alert.msg} />
             )}
@@ -74,19 +75,19 @@ class CreateAccount extends React.Component {
               inputType="email"
               inputTitle="E-mail"
               inputId="email"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
+              inputAutoFocus={true}
             />
             <InputGroup
               inputType="password"
               inputTitle="Senha"
               inputId="password"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
             />
             <Button
-              buttonClass="btn-login"
+              buttonClass="btn-login btn-success"
               buttonName="Login"
-              buttonType="button"
-              onClick={this.handleSubmit}
+              buttonType="submit"
             />
             <div className="info-bottom">
               <Link to="/create-account">Não tem uma conta?</Link>
@@ -101,4 +102,4 @@ class CreateAccount extends React.Component {
   }
 }
 
-export default withRouter(CreateAccount);
+export default withRouter(Login);

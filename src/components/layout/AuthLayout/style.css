@@ -10,7 +10,7 @@ body, #auth {
 }
 
 body {
-  background-color: #28005c;
+  background-color: #17804a;
   font-family: Roboto, Arial, sans-serif;
 }
 
@@ -48,7 +48,7 @@ input {
 }
 
 a {
-  color: #28005c;
+  color: #17804a;
   font-size: 12px;
   margin-left: 5px;
 }

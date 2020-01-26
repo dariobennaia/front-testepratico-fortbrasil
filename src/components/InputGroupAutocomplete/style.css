@@ -1,0 +1,30 @@
+.input-block-autocomplete {
+  margin-bottom: 20px;
+  animation: move-left-to-right 400ms;
+  animation-delay: 900ms;
+  animation-fill-mode: backwards;
+}
+
+.input-block-autocomplete label {
+  font-size: 14px;
+  color: #005d2dbd;
+}
+
+.input-block-autocomplete input {
+  font-size: 16px;
+  color: #6e6e6e;
+  border-radius: 2px;
+  border: 1px solid #ccddef;
+  outline-color: #005d2dbd;
+}
+
+@keyframes move-left-to-right {
+  from {
+    opacity: 0;
+    transform: translateX(-35%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

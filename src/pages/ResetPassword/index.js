@@ -9,7 +9,7 @@ import Button from '../../components/Button';
 import Squares from '../../components/effects/Squares';
 import api from '../../services/api';
 
-class ResetAccount extends React.Component {
+class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ class ResetAccount extends React.Component {
       const { data } = await api.patch('/change-password', { email, password });
       this.handleShowAlert('success', 'Senha alterada com sucesso!');
       setTimeout(() => {
-        this.props.history.push('/login');
+        this.props.history.push('/login');// eslint-disable-line
       }, 1500);
       return data;
     } catch (err) {
@@ -66,7 +66,7 @@ class ResetAccount extends React.Component {
     return (
       <AuthLayout>
         <SectionLogin title="REDEFINIR SENHA">
-          <form>
+          <form onSubmit={this.handleSubmit}>
             {alert.show && (
               <Alert alertType={alert.type} alertMsg={alert.msg} />
             )}
@@ -74,19 +74,19 @@ class ResetAccount extends React.Component {
               inputType="email"
               inputTitle="E-mail"
               inputId="email"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
+              inputAutoFocus={true}
             />
             <InputGroup
               inputType="password"
               inputTitle="Nova Senha"
               inputId="password"
-              model={this.handleChangeValueInput}
+              inputChange={this.handleChangeValueInput}
             />
             <Button
-              buttonClass="btn-reset-password"
+              buttonClass="btn-reset-password btn-success"
               buttonName="Redefinir"
-              buttonType="button"
-              onClick={this.handleSubmit}
+              buttonType="submit"
             />
             <div className="info-bottom">
               <Link to="/login">Já tenho uma conta</Link>
@@ -100,4 +100,4 @@ class ResetAccount extends React.Component {
   }
 }
 
-export default withRouter(ResetAccount);
+export default withRouter(ResetPassword);
