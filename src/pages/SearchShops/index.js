@@ -10,6 +10,8 @@ import Main from '../../components/Main';
 import InputGroup from '../../components/InputGroup';
 import ShopsListMaps from '../../components/ShopsListMaps';
 import ButtonLogout from '../../components/ButtonLogout';
+import Alert from '../../components/Alert';
+import Button from '../../components/Button';
 import ShopsList from '../../components/ShopsList';
 import InputGroupAutocomplete from '../../components/InputGroupAutocomplete';
 
@@ -24,20 +26,40 @@ class SearchShops extends React.Component {
         strokeColor: '#ff0000',
         showMap: true
       },
-      shops: []
+      shops: [],
+      alert: {}
     };
   }
 
   componentDidMount() {
     this.handleCurrentPosition();
+    this.handleShowAlert('success', 'asdasdasdasd');
   }
+
+  handleShowAlert = (type, msg) => {
+    this.setState({
+      alert: {
+        show: true,
+        type,
+        msg
+      }
+    });
+    setTimeout(() => {
+      this.setState({ alert: { show: false } });
+    }, 10000);
+  };
 
   handleSearch = async () => {
     const { distance = 10, name, latitude, longitude } = this.state.form;
     const { data } = await api.get(
       `shops/distance-of/${distance}?name=${name}&latitude=${latitude}&longitude=${longitude}`
     );
-    this.setState({ shops: data });
+
+    if (data.length === 0) {
+      this.handleShowAlert('danger', 'Nenhuma loja encontrada!');
+    }
+
+    return this.setState({ shops: data });
   };
 
   handleCurrentPosition = () => {
@@ -51,7 +73,7 @@ class SearchShops extends React.Component {
         this.handleSearch();
       },
       () => {
-        alert('Habilite sua localização');
+        this.handleShowAlert('danger', 'Habilite sua localização');
         form.showMap = false;
         this.setState(form);
         this.handleSearch();
@@ -68,7 +90,6 @@ class SearchShops extends React.Component {
       form[id] = (type === 'number' && Number(value)) || value;
     }
     this.setState(form);
-    this.handleSearch();
   };
 
   handleSelectAddress = ({ lat, lng }) => {
@@ -80,7 +101,7 @@ class SearchShops extends React.Component {
   };
 
   render() {
-    const { form, shops } = this.state;
+    const { form, shops, alert } = this.state;
     return (
       <DashLayout>
         <Sidebar>
@@ -91,6 +112,9 @@ class SearchShops extends React.Component {
             <ButtonLogout />
           </div>
           <form>
+            {alert.show && (
+              <Alert alertType={alert.type} alertMsg={alert.msg} />
+            )}
             <InputGroup
               inputId="name"
               inputTitle="Informe o nome da loja"
@@ -131,6 +155,13 @@ class SearchShops extends React.Component {
                 inputChecked={form.showRadius || false}
               />
             )}
+            <Button
+              buttonType="button"
+              buttonName="Pesquisar"
+              buttonClass="btn-success"
+              onClick={this.handleSearch}
+              buttonDisabled={!form.latitude || !form.longitude}
+            />
           </form>
         </Sidebar>
         <Main>
