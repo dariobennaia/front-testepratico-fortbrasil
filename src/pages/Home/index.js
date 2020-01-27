@@ -1,8 +1,6 @@
 import React from 'react';
 import './style.css';
 
-import { Link } from 'react-router-dom';
-import { FaMapMarkedAlt } from 'react-icons/fa';
 import api from '../../services/api';
 import DashLayout from '../../components/layout/DashLayout';
 import Sidebar from '../../components/Sidebar';
@@ -12,7 +10,7 @@ import InputGroupAutocomplete from '../../components/InputGroupAutocomplete';
 import Button from '../../components/Button';
 import Alert from '../../components/Alert';
 import ShopsList from '../../components/ShopsList';
-import ButtonLogout from '../../components/ButtonLogout';
+import Tabs from '../../components/Tabs';
 
 class Home extends React.Component {
   constructor(props) {
@@ -129,10 +127,7 @@ class Home extends React.Component {
       <DashLayout>
         <Sidebar>
           <div>
-            <Link to="/shops/maps" className="menu-option">
-              Lojas proximas a você <FaMapMarkedAlt />
-            </Link>
-            <ButtonLogout />
+            <Tabs activeShops="active" />
           </div>
           <form onSubmit={this.handleSave}>
             {alert.show && (

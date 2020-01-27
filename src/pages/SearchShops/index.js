@@ -1,19 +1,17 @@
 import React from 'react';
 import './style.css';
 
-import { Link } from 'react-router-dom';
-import { AiOutlineShop } from 'react-icons/ai';
 import api from '../../services/api';
 import DashLayout from '../../components/layout/DashLayout';
 import Sidebar from '../../components/Sidebar';
 import Main from '../../components/Main';
 import InputGroup from '../../components/InputGroup';
 import ShopsListMaps from '../../components/ShopsListMaps';
-import ButtonLogout from '../../components/ButtonLogout';
 import Alert from '../../components/Alert';
 import Button from '../../components/Button';
 import ShopsList from '../../components/ShopsList';
 import InputGroupAutocomplete from '../../components/InputGroupAutocomplete';
+import Tabs from '../../components/Tabs';
 
 class SearchShops extends React.Component {
   constructor(props) {
@@ -33,7 +31,6 @@ class SearchShops extends React.Component {
 
   componentDidMount() {
     this.handleCurrentPosition();
-    this.handleShowAlert('success', 'asdasdasdasd');
   }
 
   handleShowAlert = (type, msg) => {
@@ -112,10 +109,7 @@ class SearchShops extends React.Component {
       <DashLayout>
         <Sidebar>
           <div>
-            <Link to="/shops" className="menu-option">
-              Gerênciar Lojas <AiOutlineShop />
-            </Link>
-            <ButtonLogout />
+            <Tabs activeMaps="active" />
           </div>
           <form>
             {alert.show && (
