@@ -50,7 +50,13 @@ class SearchShops extends React.Component {
   };
 
   handleSearch = async () => {
-    const { distance = 10, name, latitude, longitude } = this.state.form;
+    const {
+      distance = 10,
+      name,
+      latitude = 0,
+      longitude = 0
+    } = this.state.form;
+
     const { data } = await api.get(
       `shops/distance-of/${distance}?name=${name}&latitude=${latitude}&longitude=${longitude}`
     );
