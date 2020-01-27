@@ -4,9 +4,8 @@ import { FaTrashAlt, FaEdit, FaInfo } from 'react-icons/fa';
 
 class ShopsList extends React.Component {
   render() {
-    const { shopEdit, shopDelete, shops = [] } = this.props;// eslint-disable-line
-    const imageShopList =
-      'https://cdn.icon-icons.com/icons2/606/PNG/512/shop-store-frontal-building_icon-icons.com_56118.png';
+    const { shopEdit, shopDelete, shops = [], options = true } = this.props;// eslint-disable-line
+    const imageShopList = '/shop-ico.png';
 
     return (
       <>
@@ -18,14 +17,16 @@ class ShopsList extends React.Component {
                 <div className="shop-info">
                   <strong>{shop.name}</strong>
                 </div>
-                <div className="shop-actions">
-                  <button onClick={() => shopDelete(shop._id)}>
-                    <FaTrashAlt />
-                  </button>
-                  <button onClick={() => shopEdit(shop)}>
-                    <FaEdit />
-                  </button>
-                </div>
+                {options && (
+                  <div className="shop-actions">
+                    <button onClick={() => shopDelete(shop._id)}>
+                      <FaTrashAlt />
+                    </button>
+                    <button onClick={() => shopEdit(shop)}>
+                      <FaEdit />
+                    </button>
+                  </div>
+                )}
               </header>
               <p>{shop.about}</p>
             </li>
@@ -35,7 +36,7 @@ class ShopsList extends React.Component {
           <div className="no-information">
             <span>
               <FaInfo />
-              Nenhuma loja cadastrada
+              Nenhuma informação
             </span>
           </div>
         )}

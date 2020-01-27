@@ -17,17 +17,6 @@ class ShopsListMaps extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.handleCurrentPosition();
-  }
-
-  handleCurrentPosition = () => {
-    navigator.geolocation.getCurrentPosition(position => {
-      const { latitude, longitude } = position.coords;
-      this.setState({ myLocation: { lat: latitude, lng: longitude } });
-    });
-  };
-
   toggleInfo = () => {
     const { info } = this.state;
     this.setState({
@@ -36,12 +25,16 @@ class ShopsListMaps extends React.Component {
   };
 
   render() {
-    const { shops = [], radius = {} } = this.props;// eslint-disable-line
+    const { shops = [], radius = {}, currentPosition = {} } = this.props;// eslint-disable-line
 
-    const { myLocation, info } = this.state;
+    const { info } = this.state;
+    const myLocation = {
+      lat: currentPosition.latitude,
+      lng: currentPosition.longitude
+    };
 
     const myLocationIcon = new window.google.maps.MarkerImage(
-      'https://static.thenounproject.com/png/607183-200.png',
+      '/me-ico.png',
       null /* size is determined at runtime */,
       null /* origin is 0,0 */,
       null /* anchor is bottom center of the scaled image */,
@@ -49,7 +42,7 @@ class ShopsListMaps extends React.Component {
     );
 
     const shopIcon = new window.google.maps.MarkerImage(
-      'https://cdn.icon-icons.com/icons2/606/PNG/512/shop-store-frontal-building_icon-icons.com_56118.png',
+      '/shop-ico.png',
       null /* size is determined at runtime */,
       null /* origin is 0,0 */,
       null /* anchor is bottom center of the scaled image */,

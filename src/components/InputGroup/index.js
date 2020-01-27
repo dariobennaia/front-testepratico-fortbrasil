@@ -12,7 +12,8 @@ class InputGroup extends React.Component {
       inputValue,// eslint-disable-line
       inputDisabled = false,// eslint-disable-line
       inputAutoFocus = false,// eslint-disable-line
-      inputAutoComplete = 'off'// eslint-disable-line
+      inputAutoComplete = 'off',// eslint-disable-line
+      inputChecked = false// eslint-disable-line
     } = this.props;
 
     return (
@@ -24,8 +25,9 @@ class InputGroup extends React.Component {
               type={inputType}
               id={inputId}
               onChange={inputChange}
-              defaultChecked={inputValue}
               disabled={inputDisabled}
+              checked={inputChecked}
+              value={inputValue}
             />
           </div>
         )) || (

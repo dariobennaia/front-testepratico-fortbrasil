@@ -22,7 +22,8 @@ class Home extends React.Component {
         name: '',
         about: '',
         latitude: '',
-        longitude: ''
+        longitude: '',
+        address: false
       },
       alert: {},
       shops: []
@@ -39,9 +40,13 @@ class Home extends React.Component {
   };
 
   handleChangeValueInput = e => {
-    const { value, id } = e.target;
+    const { value, id, checked, type } = e.target;
     const { form } = this.state;
-    form[id] = value;
+    if (type === 'checkbox') {
+      form[id] = checked;
+    } else {
+      form[id] = (type === 'number' && Number(value)) || value;
+    }
     this.setState(form);
   };
 
@@ -111,8 +116,11 @@ class Home extends React.Component {
   };
 
   handleDeleteShop = async id => {
+    if (!window.confirm('Você tem certeza que deseja excluir?')) {
+      return false;
+    }
     await api.delete(`/shops/${id}`);
-    this.handleLoadShops();
+    return this.handleLoadShops();
   };
 
   render() {
@@ -122,7 +130,7 @@ class Home extends React.Component {
         <Sidebar>
           <div>
             <Link to="/shops/maps" className="menu-option">
-              Ver no mapa <FaMapMarkedAlt />
+              Lojas proximas a você <FaMapMarkedAlt />
             </Link>
             <ButtonLogout />
           </div>
@@ -132,7 +140,7 @@ class Home extends React.Component {
             )}
             <InputGroup
               inputId="name"
-              inputTitle="Nome loja"
+              inputTitle="Informe o nome da loja"
               inputType="text"
               inputChange={this.handleChangeValueInput}
               inputValue={form.name || ''}
@@ -140,31 +148,43 @@ class Home extends React.Component {
             />
             <InputGroup
               inputId="about"
-              inputTitle="Descrição (sobre)"
+              inputTitle="Informe uma descrição para loja"
               inputType="text"
               inputChange={this.handleChangeValueInput}
               inputValue={form.about || ''}
             />
-            <InputGroupAutocomplete
+            <InputGroup
               inputId="address"
-              inputTitle="Endereço"
-              inputType="text"
-              onSelected={this.handleSelectAddress}
+              inputTitle="Por endereço"
+              inputType="checkbox"
+              inputChange={this.handleChangeValueInput}
+              inputChecked={form.address}
             />
-            <InputGroup
-              inputId="latitude"
-              inputTitle="Latitude"
-              inputType="number"
-              inputValue={form.latitude || ''}
-              inputDisabled={true}
-            />
-            <InputGroup
-              inputId="longitude"
-              inputTitle="Longitude"
-              inputType="number"
-              inputValue={form.longitude || ''}
-              inputDisabled={true}
-            />
+            {(form.address && (
+              <InputGroupAutocomplete
+                inputId="address"
+                inputTitle="Informe o endereço da loja"
+                inputType="text"
+                onSelected={this.handleSelectAddress}
+              />
+            )) || (
+              <>
+                <InputGroup
+                  inputId="latitude"
+                  inputTitle="Latitude"
+                  inputType="number"
+                  inputValue={form.latitude || ''}
+                  inputChange={this.handleChangeValueInput}
+                />
+                <InputGroup
+                  inputId="longitude"
+                  inputTitle="Longitude"
+                  inputType="number"
+                  inputChange={this.handleChangeValueInput}
+                  inputValue={form.longitude || ''}
+                />
+              </>
+            )}
             <div className="buttons-actions">
               <Button
                 buttonType="submit"

@@ -10,6 +10,8 @@ import Main from '../../components/Main';
 import InputGroup from '../../components/InputGroup';
 import ShopsListMaps from '../../components/ShopsListMaps';
 import ButtonLogout from '../../components/ButtonLogout';
+import ShopsList from '../../components/ShopsList';
+import InputGroupAutocomplete from '../../components/InputGroupAutocomplete';
 
 class SearchShops extends React.Component {
   constructor(props) {
@@ -19,7 +21,8 @@ class SearchShops extends React.Component {
         name: '',
         showRadius: true,
         distance: 10000,
-        strokeColor: '#ff0000'
+        strokeColor: '#ff0000',
+        showMap: true
       },
       shops: []
     };
@@ -49,6 +52,8 @@ class SearchShops extends React.Component {
       },
       () => {
         alert('Habilite sua localização');
+        form.showMap = false;
+        this.setState(form);
         this.handleSearch();
       }
     );
@@ -62,6 +67,14 @@ class SearchShops extends React.Component {
     } else {
       form[id] = (type === 'number' && Number(value)) || value;
     }
+    this.setState(form);
+    this.handleSearch();
+  };
+
+  handleSelectAddress = ({ lat, lng }) => {
+    const { form } = this.state;
+    form.latitude = lat;
+    form.longitude = lng;
     this.setState(form);
     this.handleSearch();
   };
@@ -93,19 +106,44 @@ class SearchShops extends React.Component {
               inputChange={this.handleChangeValueInput}
               inputValue={form.distance || 1}
             />
+            {(!form.latitude || !form.longitude) && (
+              <InputGroupAutocomplete
+                inputId="address"
+                inputTitle="Ops! não achamos sua localização, poderia nos informar?"
+                inputType="text"
+                onSelected={this.handleSelectAddress}
+              />
+            )}
             <InputGroup
-              inputId="showRadius"
-              inputTitle="Mostrar raio"
+              inputId="showMap"
+              inputTitle="Mostrar mapa"
               inputType="checkbox"
               inputChange={this.handleChangeValueInput}
-              inputValue={form.showRadius || 'off'}
+              inputChecked={form.showMap || false}
+              inputDisabled={!form.showMap && !form.latitude}
             />
+            {form.showMap && (
+              <InputGroup
+                inputId="showRadius"
+                inputTitle="Mostrar raio"
+                inputType="checkbox"
+                inputChange={this.handleChangeValueInput}
+                inputChecked={form.showRadius || false}
+              />
+            )}
           </form>
         </Sidebar>
         <Main>
-          <div className="maps">
-            <ShopsListMaps shops={shops} radius={form} />
-          </div>
+          {form.showMap && (
+            <div className="maps">
+              <ShopsListMaps
+                shops={shops}
+                radius={form}
+                currentPosition={form}
+              />
+            </div>
+          )}
+          {!form.showMap && <ShopsList shops={shops} options={false} />}
         </Main>
       </DashLayout>
     );
